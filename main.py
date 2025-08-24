@@ -26,12 +26,6 @@ class Data(BaseModel):
     hours_per_week: int = Field(..., example=40, alias="hours-per-week")
     native_country: str = Field(..., example="United-States", alias="native-country")
 
-path = None # TODO: enter the path for the saved encoder 
-encoder = load_model(path)
-
-path = None # TODO: enter the path for the saved model 
-model = load_model(path)
-
 # TODO: enter the path for the saved encoder
 path = os.path.join(os.path.dirname(__file__), "model", "encoder.pkl")
 encoder = load_model(path)
