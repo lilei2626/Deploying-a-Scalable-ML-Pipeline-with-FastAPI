@@ -1,8 +1,9 @@
+from __future__ import annotations
 import pickle
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from ml.data import process_data
 # TODO: add necessary import
-from __future__ import annotations
+
 
 from pathlib import Path
 from typing import Any, Dict, Optional, Tuple
