@@ -91,7 +91,7 @@ def save_model(model, path):
     # TODO: implement the function
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    joblib.dump(obj, path)
+    joblib.dump(model, path)
     
 
 def load_model(path):
