@@ -32,16 +32,22 @@ encoder = load_model(path)
 path = None # TODO: enter the path for the saved model 
 model = load_model(path)
 
+# TODO: enter the path for the saved encoder
+path = os.path.join(os.path.dirname(__file__), "model", "encoder.pkl")
+encoder = load_model(path)
+
+# TODO: enter the path for the saved model
+path = os.path.join(os.path.dirname(__file__), "model", "model.pkl")
+model = load_model(path)
+
 # TODO: create a RESTful API using FastAPI
-app = None # your code here
+app = FastAPI(title="Income Prediction API")
 
 # TODO: create a GET on the root giving a welcome message
 @app.get("/")
 async def get_root():
     """ Say hello!"""
-    # your code here
-    pass
-
+    return {"message": "Hello from the API!"}
 
 # TODO: create a POST on a different path that does model inference
 @app.post("/data/")
@@ -65,10 +71,12 @@ async def post_inference(data: Data):
         "native-country",
     ]
     data_processed, _, _, _ = process_data(
-        # your code here
-        # use data as data input
-        # use training = False
-        # do not need to pass lb as input
+        data,
+        categorical_features=cat_features,
+        label=None,
+        training=False,
+        encoder=encoder,
+        # do not pass lb at inference per template instructions
     )
-    _inference = None # your code here to predict the result using data_processed
+    _inference = inference(model, data_processed)
     return {"result": apply_label(_inference)}
