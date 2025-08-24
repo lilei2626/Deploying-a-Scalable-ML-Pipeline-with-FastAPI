@@ -1,6 +1,7 @@
 import os
 
 import pandas as pd
+from pathlib import Path
 from sklearn.model_selection import train_test_split
 
 from ml.data import process_data
@@ -13,7 +14,7 @@ from ml.model import (
     train_model,
 )
 # TODO: load the cencus.csv data
-project_path = Path(__file__).resolve().parent  # repo root (adjust if needed)
+project_path = Path(__file__).resolve().parent 
 data_path = project_path / "data" / "census.csv"
 model_dir = project_path / "model"
 model_dir.mkdir(parents=True, exist_ok=True)
